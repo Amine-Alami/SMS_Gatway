@@ -5,7 +5,6 @@ import android.content.Context;
 
 public class App extends Application {
     private static Application sApplication;
-    private static Context context;
 
     public static Application getApplication() {
         return sApplication;
@@ -21,6 +20,4 @@ public class App extends Application {
         sApplication = this;
 
     }
-
-
 }
