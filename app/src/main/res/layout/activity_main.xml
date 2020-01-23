@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:context="com.jassani.sms_gateway.MainActivity">
 
     <TextView
+        android:id="@+id/txtPort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:inputType="textPersonName"
+        android:text="Port d'écoute :"
+        android:textSize="14sp" />
+    <EditText
+        android:id="@+id/port"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="8765"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/ipaddr"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.06"
+        android:text="@string/ip" />
+    <TextView
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sms"
+        android:id="@+id/textView"
+        android:layout_weight="0.03"
+        android:textStyle="normal|bold" />
+    <TextView
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:text="@string/num_ro"
+        android:id="@+id/numSMS"
+        android:layout_weight="0.06" />
+    <TextView
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:text="@string/texte"
+        android:id="@+id/txtSMS"
+        android:layout_weight="0.06" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

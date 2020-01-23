@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SMS_Gatway</string>
+    <string name="sms">SMS</string>
+    <string name="ip">IP</string>
+    <string name="num_ro">Numéro : ?</string>
+    <string name="texte">Message : ?</string>
 </resources>
