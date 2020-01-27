@@ -7,8 +7,6 @@ import android.os.IBinder;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.jassani.App;
-
 public class YourBackgroundService extends Service {
 
     private final String CHANNEL_ID = "personal_notifications";

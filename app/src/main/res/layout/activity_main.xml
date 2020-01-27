@@ -60,7 +60,7 @@
             android:textStyle="normal|bold" />
 
         <TextView
-            android:id="@+id/numSMS"
+            android:id="@+id/logArea"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.06"
