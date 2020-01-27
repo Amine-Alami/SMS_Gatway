@@ -7,7 +7,7 @@ import android.os.IBinder;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-public class YourBackgroundService extends Service {
+public class BackgroundService extends Service {
 
     private final String CHANNEL_ID = "personal_notifications";
     private final int NOTIFICATION_ID = 001;

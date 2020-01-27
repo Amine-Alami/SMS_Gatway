@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 server = new MyHTTPD(port); // cree le serveur NanoHTTPD si inexistant
             }
             server.start();             // lance ou relance le serveur
-            startService(new Intent(this, YourBackgroundService.class));
+            startService(new Intent(this, BackgroundService.class));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static void log(TypeLog typeLog, String text) {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd mm.ss : ");
-        logInput.setText(logInput.getText().toString() + '\n' + dateFormat.format(new Date()) + "[" + typeLog.toString() + "] : " + text);
+        logInput.append('\n' + dateFormat.format(new Date()) + "[" + typeLog.toString() + "] : " + text);
     }
 }
 

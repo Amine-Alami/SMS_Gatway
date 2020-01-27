@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="com.jassani.sms_gateway.App">
-        <service android:name="com.jassani.sms_gateway.YourBackgroundService" />
+        <service android:name="com.jassani.sms_gateway.BackgroundService" />
         <activity android:name="com.jassani.sms_gateway.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
