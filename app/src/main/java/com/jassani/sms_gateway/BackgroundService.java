@@ -25,7 +25,7 @@ public class BackgroundService extends Service {
             NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(App.getContext());
             notificationManagerCompat.notify(NOTIFICATION_ID,mBuilder.build());
 
-            //Toast.makeText(this, "Service", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "Service", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             MainActivity.log(TypeLog.ERROR, "Exception on onStartCommand :" + e.getMessage());
         }
