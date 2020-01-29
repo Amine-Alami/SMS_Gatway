@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,10 +21,20 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static TextView logInput;
+    private TextView logInput;
     private TextView edPort;
     private MyHTTPD server;
     private TextView textIpaddr;
+    private static MainActivity instance;
+
+
+    public MainActivity() {
+        instance = this;
+    }
+
+    public static MainActivity getInstance() {
+        return instance;
+    }
 
     /**
      * Lorsque l'appli est cree, on connecte les objets aux widgets de l'UI
@@ -37,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         logInput = findViewById(R.id.logArea);
         edPort = (EditText) findViewById(R.id.port);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
+
+        logInput.setMovementMethod(new ScrollingMovementMethod());
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
         if (!wifiManager.isWifiEnabled()) { // test si WiFi actif
@@ -88,8 +101,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void log(TypeLog typeLog, String text) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd mm.ss : ");
-        logInput.append('\n' + dateFormat.format(new Date()) + "[" + typeLog.toString() + "] : " + text);
+        getInstance().logText(typeLog, text);
+    }
+
+    public void logText(final TypeLog typeLog, final String text) {
+        // https://stackoverflow.com/a/5162096
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy mm.ss : ");
+                logInput.append('\n' + dateFormat.format(new Date()) + "[" + typeLog.toString() + "] : " + text);
+
+            }
+        });
     }
 }
 

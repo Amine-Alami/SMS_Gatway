@@ -42,10 +42,11 @@
             android:inputType="textPersonName"
             android:text="/?simID=1&amp;number=06xxxxxxxx"
             android:textSize="24sp" />
+
         <TextView
             android:id="@+id/exemple2"
             android:layout_width="wrap_content"
-            android:layout_height="88dp"
+            android:layout_height="45dp"
             android:inputType="textPersonName"
             android:text="&amp;text=xxxxxx"
             android:textSize="24sp" />
@@ -55,18 +56,18 @@
             android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.03"
-            android:text="sms"
+            android:text="Log"
             android:textSize="24dp"
             android:textStyle="normal|bold" />
 
         <TextView
             android:id="@+id/logArea"
             android:layout_width="312dp"
-            android:layout_height="wrap_content"
+            android:layout_height="235dp"
             android:layout_weight="0.06"
-            android:textSize="24dp"
             android:singleLine="false"
-            android:text="Infos will show up here !" />
+            android:text=""
+            android:textSize="15dp" />
 
     </LinearLayout>
 

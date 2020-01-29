@@ -31,12 +31,12 @@ class MyHTTPD extends NanoHTTPD {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
     @Override
     public Response serve(IHTTPSession session) {
-        if (session.getMethod() == Method.GET) {
-            Map<String, List<String>> parameters = session.getParameters();
+        Map<String, List<String>> parameters = session.getParameters();
+        if (session.getMethod() == Method.GET && parameters != null && parameters.size() > 0) {
 
             // simID
             List<String> simIDList = parameters.get("simID");
-            if (simIDList == null | simIDList.size() == 0) {
+            if (simIDList == null || simIDList.size() == 0) {
                 MainActivity.log(TypeLog.INFO, "The request is malformed: simID is not defined.");
                 return newFixedLengthResponse(Response.Status.BAD_REQUEST, MIME_PLAINTEXT, "The request is malformed: simID is not defined.");
             }
@@ -64,7 +64,6 @@ class MyHTTPD extends NanoHTTPD {
             MainActivity.log(TypeLog.INFO, simID + " --> " + numeroDestinataire + " --> " + message);
             return newFixedLengthResponse("ok");
         } else {
-            MainActivity.log(TypeLog.INFO, "The request is malformed");
             return newFixedLengthResponse(Response.Status.BAD_REQUEST, MIME_PLAINTEXT, "The request is malformed");
         }
     }

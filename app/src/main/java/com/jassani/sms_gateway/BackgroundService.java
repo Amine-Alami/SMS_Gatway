@@ -14,17 +14,21 @@ public class BackgroundService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        onTaskRemoved(intent);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(App.getContext(),CHANNEL_ID);
-        mBuilder.setSmallIcon(R.mipmap.logojassani);
-        mBuilder.setContentTitle("HoucineSMS");
-        mBuilder.setContentText("Service is running");
-        mBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        try {
+            onTaskRemoved(intent);
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(App.getContext(),CHANNEL_ID);
+            mBuilder.setSmallIcon(R.mipmap.logojassani);
+            mBuilder.setContentTitle("HoucineSMS");
+            mBuilder.setContentText("Service is running");
+            mBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(App.getContext());
-        notificationManagerCompat.notify(NOTIFICATION_ID,mBuilder.build());
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(App.getContext());
+            notificationManagerCompat.notify(NOTIFICATION_ID,mBuilder.build());
 
-        //Toast.makeText(this, "Service", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Service", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            MainActivity.log(TypeLog.ERROR, "Exception on onStartCommand :" + e.getMessage());
+        }
 
         return START_STICKY;
     }
@@ -32,14 +36,19 @@ public class BackgroundService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        MainActivity.log(TypeLog.ERROR, "onBind Not yet implemented !");
+        throw new UnsupportedOperationException("onBind Not yet implemented !");
     }
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
-        Intent restartServiceIntent = new Intent(getApplicationContext(), this.getClass());
-        restartServiceIntent.setPackage(getPackageName());
-        startService(restartServiceIntent);
-        super.onTaskRemoved(rootIntent);
+        try {
+            Intent restartServiceIntent = new Intent(getApplicationContext(), this.getClass());
+            restartServiceIntent.setPackage(getPackageName());
+            startService(restartServiceIntent);
+            super.onTaskRemoved(rootIntent);
+        } catch (Exception e) {
+            MainActivity.log(TypeLog.ERROR, "onTaskRemoved Exception:" + e.getMessage());
+        }
     }
 }
